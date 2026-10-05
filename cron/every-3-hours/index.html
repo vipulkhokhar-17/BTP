@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cron Every 3 hours: 0 */3 * * * Explained</title>
+<meta name="description" content="0 */3 * * * is the cron expression for every 3 hours. Runs eight times a day: 00:00, 03:00, 06:00 … 21:00.">
+<link rel="canonical" href="https://vip-ul.codes/cron/every-3-hours/">
+<meta property="og:title" content="Cron Every 3 hours: 0 */3 * * * Explained">
+<meta property="og:description" content="0 */3 * * * is the cron expression for every 3 hours. Runs eight times a day: 00:00, 03:00, 06:00 … 21:00.">
+<meta property="og:url" content="https://vip-ul.codes/cron/every-3-hours/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Vipul Codes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Cron Every 3 hours: 0 */3 * * * Explained", "description": "0 */3 * * * is the cron expression for every 3 hours. Runs eight times a day: 00:00, 03:00, 06:00 … 21:00.", "url": "https://vip-ul.codes/cron/every-3-hours/", "author": {"@type": "Person", "name": "Vipul Khokhar", "url": "https://vip-ul.codes/about.html"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://vip-ul.codes/"}, {"@type": "ListItem", "position": 2, "name": "Cron reference", "item": "https://vip-ul.codes/cron/"}, {"@type": "ListItem", "position": 3, "name": "Every 3 hours", "item": "https://vip-ul.codes/cron/every-3-hours/"}]}</script>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+<div class="nav-container">
+<a class="nav-logo" href="/"><span class="logo-bracket">&lt;</span><span class="logo-text">Vipul</span><span class="logo-dot">.</span><span class="logo-text-alt">codes</span><span class="logo-bracket">/&gt;</span></a>
+<ul class="nav-menu" id="nav-menu">
+<li><a class="nav-link" href="/">Home</a></li>
+<li><a class="nav-link active" href="/cron/">Cron reference</a></li>
+<li><a class="nav-link" href="/about.html">About</a></li>
+<li><a class="nav-link" href="/contact.html">Contact</a></li>
+</ul>
+<button aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+</div>
+</nav>
+<header class="page-hero cron-hero">
+<div class="hero-bg"><div class="hero-grid"></div><div class="hero-glow"></div></div>
+<div class="hero-content">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/cron/">Cron reference</a> › <span>every 3 hours</span></nav>
+<h1>Cron every 3 hours</h1>
+<div class="cron-expr"><code>0 */3 * * *</code></div>
+<p class="hero-subtitle">Runs eight times a day: 00:00, 03:00, 06:00 … 21:00.</p>
+</div>
+</header>
+<main>
+<article class="section cron-article">
+<div class="container">
+<h2>What each field means</h2>
+<table class="fields">
+<thead><tr><th>Field</th><th>Position</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>0</code></td><td>minute</td><td>only 0</td></tr>
+<tr><td><code>*/3</code></td><td>hour</td><td>every 3rd hour (00:00–00:59, 03:00–03:59, 06:00–06:59, 09:00–09:59, …)</td></tr>
+<tr><td><code>*</code></td><td>day of month</td><td>every day of month</td></tr>
+<tr><td><code>*</code></td><td>month</td><td>every month</td></tr>
+<tr><td><code>*</code></td><td>day of week</td><td>every day of week</td></tr>
+</tbody>
+</table>
+<h2>Example run times</h2>
+<p>Starting from Wednesday 07 Jan 2026, 10:17, the next runs are:</p>
+<ul class="runs">
+<li>Wed 07 Jan 2026, 12:00</li>
+<li>Wed 07 Jan 2026, 15:00</li>
+<li>Wed 07 Jan 2026, 18:00</li>
+<li>Wed 07 Jan 2026, 21:00</li>
+<li>Thu 08 Jan 2026, 00:00</li>
+<li>Thu 08 Jan 2026, 03:00</li>
+</ul>
+<h2>How often it runs</h2>
+<ul class="runs-facts">
+<li>8 runs on each day it is active.</li>
+<li>Active on 365 of the 365 days in 2026, for 2,920 runs that year.</li>
+<li>Runs are always exactly 3 hours apart.</li>
+</ul>
+
+<h2>Use it on your platform</h2>
+<h3>Linux crontab</h3>
+<pre class="snippet"><code>0 */3 * * * /path/to/command</code></pre>
+<p>Edit with <code>crontab -e</code>. Cron uses the server's local time zone.</p>
+<h3>GitHub Actions</h3>
+<pre class="snippet"><code>on:
+  schedule:
+    - cron: '0 */3 * * *'</code></pre>
+<p>Schedules are evaluated in UTC, and runs can start late when GitHub is busy.</p>
+
+<h3>Kubernetes CronJob</h3>
+<pre class="snippet"><code>apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: my-job
+spec:
+  schedule: "0 */3 * * *"
+  timeZone: "Etc/UTC"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: my-job
+              image: busybox
+              command: ["sh", "-c", "date"]
+          restartPolicy: OnFailure</code></pre>
+<p>Without <code>timeZone</code>, the schedule follows the time zone of the kube-controller-manager.</p>
+<h3>AWS EventBridge</h3>
+<pre class="snippet"><code>cron(0 0/3 * * ? *)</code></pre>
+<p>AWS uses six fields (the last is the year), needs <code>?</code> in either day-of-month or
+day-of-week, and counts weekdays from 1 = Sunday, so names like <code>MON</code> are safer than numbers.
+EventBridge rules run in UTC; EventBridge Scheduler lets you choose a time zone.</p>
+<h3>Spring <code>@Scheduled</code></h3>
+<pre class="snippet"><code>@Scheduled(cron = "0 0 */3 * * *")</code></pre>
+<p>Spring adds a seconds field at the start, so prepend <code>0</code> to run at second zero.</p>
+<h3>Quartz</h3>
+<pre class="snippet"><code>0 0 0/3 * * ?</code></pre>
+<p>Quartz also starts with seconds and, like AWS, requires <code>?</code> in one of the day fields.</p>
+
+<h2>Related schedules</h2>
+<ul class="related"><li><a href="/cron/every-2-hours/">Cron every 2 hours</a> <code>0 */2 * * *</code></li><li><a href="/cron/every-4-hours/">Cron every 4 hours</a> <code>0 */4 * * *</code></li><li><a href="/cron/every-hour/">Cron every hour</a> <code>0 * * * *</code></li><li><a href="/cron/every-6-hours/">Cron every 6 hours</a> <code>0 */6 * * *</code></li><li><a href="/cron/every-12-hours/">Cron every 12 hours</a> <code>0 */12 * * *</code></li><li><a href="/cron/every-5-hours/">Cron every 5 hours</a> <code>0 */5 * * *</code></li></ul>
+</div>
+</article>
+</main>
+<footer class="footer">
+<div class="container">
+<div class="footer-bottom">
+<p>© 2026 Vipul Codes</p>
+<p class="footer-note">Run times on every page are computed from the expression, not typed by hand.</p>
+</div>
+</div>
+</footer>
+<script src="/js/main.js"></script>
+</body>
+</html>

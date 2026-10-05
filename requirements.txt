@@ -1,0 +1,7 @@
+# Site generator and analysis use only the standard library.
+# Search Console export:
+google-api-python-client>=2.100
+google-auth>=2.20
+# Tests:
+pytest>=8
+croniter>=2.0

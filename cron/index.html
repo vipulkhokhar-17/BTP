@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cron Expression Reference: Common Schedules with Examples</title>
+<meta name="description" content="46 common cron schedules explained with example run times and syntax for crontab, GitHub Actions, Kubernetes, AWS EventBridge, Spring and Quartz.">
+<link rel="canonical" href="https://vip-ul.codes/cron/">
+<meta property="og:title" content="Cron Expression Reference: Common Schedules with Examples">
+<meta property="og:description" content="46 common cron schedules explained with example run times and syntax for crontab, GitHub Actions, Kubernetes, AWS EventBridge, Spring and Quartz.">
+<meta property="og:url" content="https://vip-ul.codes/cron/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vipul Codes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Cron expression reference", "url": "https://vip-ul.codes/cron/"}</script>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+<div class="nav-container">
+<a class="nav-logo" href="/"><span class="logo-bracket">&lt;</span><span class="logo-text">Vipul</span><span class="logo-dot">.</span><span class="logo-text-alt">codes</span><span class="logo-bracket">/&gt;</span></a>
+<ul class="nav-menu" id="nav-menu">
+<li><a class="nav-link" href="/">Home</a></li>
+<li><a class="nav-link active" href="/cron/">Cron reference</a></li>
+<li><a class="nav-link" href="/about.html">About</a></li>
+<li><a class="nav-link" href="/contact.html">Contact</a></li>
+</ul>
+<button aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+</div>
+</nav>
+<header class="page-hero">
+<div class="hero-bg"><div class="hero-grid"></div><div class="hero-glow"></div></div>
+<div class="hero-content">
+<h1>Cron expression reference</h1>
+<p class="hero-subtitle">46 common schedules, each with a field-by-field breakdown,
+computed example run times, and the exact syntax for crontab, GitHub Actions, Kubernetes, AWS, Spring and Quartz.</p>
+</div>
+</header>
+<main><section class="section"><div class="container">
+<h2>Cron syntax in one line</h2>
+<pre class="snippet"><code>┌ minute (0–59)
+│ ┌ hour (0–23)
+│ │ ┌ day of month (1–31)
+│ │ │ ┌ month (1–12 or JAN–DEC)
+│ │ │ │ ┌ day of week (0–7 or SUN–SAT, 0 and 7 are Sunday)
+* * * * *</code></pre>
+<h2>Every N minutes</h2>
+<ul class="cron-list"><li><a href="/cron/every-minute/"><span>Every minute</span><code>* * * * *</code></a></li><li><a href="/cron/every-2-minutes/"><span>Every 2 minutes</span><code>*/2 * * * *</code></a></li><li><a href="/cron/every-5-minutes/"><span>Every 5 minutes</span><code>*/5 * * * *</code></a></li><li><a href="/cron/every-10-minutes/"><span>Every 10 minutes</span><code>*/10 * * * *</code></a></li><li><a href="/cron/every-15-minutes/"><span>Every 15 minutes</span><code>*/15 * * * *</code></a></li><li><a href="/cron/every-20-minutes/"><span>Every 20 minutes</span><code>*/20 * * * *</code></a></li><li><a href="/cron/every-30-minutes/"><span>Every 30 minutes</span><code>*/30 * * * *</code></a></li><li><a href="/cron/every-45-minutes/"><span>Every 45 minutes</span><code>*/45 * * * *</code></a></li><li><a href="/cron/every-7-minutes/"><span>Every 7 minutes</span><code>*/7 * * * *</code></a></li></ul>
+<h2>Every N hours</h2>
+<ul class="cron-list"><li><a href="/cron/every-hour/"><span>Every hour</span><code>0 * * * *</code></a></li><li><a href="/cron/every-2-hours/"><span>Every 2 hours</span><code>0 */2 * * *</code></a></li><li><a href="/cron/every-3-hours/"><span>Every 3 hours</span><code>0 */3 * * *</code></a></li><li><a href="/cron/every-4-hours/"><span>Every 4 hours</span><code>0 */4 * * *</code></a></li><li><a href="/cron/every-6-hours/"><span>Every 6 hours</span><code>0 */6 * * *</code></a></li><li><a href="/cron/every-12-hours/"><span>Every 12 hours</span><code>0 */12 * * *</code></a></li><li><a href="/cron/every-5-hours/"><span>Every 5 hours</span><code>0 */5 * * *</code></a></li><li><a href="/cron/every-hour-at-30/"><span>Every hour at half past</span><code>30 * * * *</code></a></li></ul>
+<h2>Daily</h2>
+<ul class="cron-list"><li><a href="/cron/every-day-at-midnight/"><span>Every day at midnight</span><code>0 0 * * *</code></a></li><li><a href="/cron/every-day-at-1am/"><span>Every day at 1am</span><code>0 1 * * *</code></a></li><li><a href="/cron/every-day-at-2am/"><span>Every day at 2am</span><code>0 2 * * *</code></a></li><li><a href="/cron/every-day-at-6am/"><span>Every day at 6am</span><code>0 6 * * *</code></a></li><li><a href="/cron/every-day-at-8am/"><span>Every day at 8am</span><code>0 8 * * *</code></a></li><li><a href="/cron/every-day-at-9am/"><span>Every day at 9am</span><code>0 9 * * *</code></a></li><li><a href="/cron/every-day-at-noon/"><span>Every day at noon</span><code>0 12 * * *</code></a></li><li><a href="/cron/every-day-at-6pm/"><span>Every day at 6pm</span><code>0 18 * * *</code></a></li><li><a href="/cron/twice-a-day/"><span>Twice a day</span><code>0 0,12 * * *</code></a></li><li><a href="/cron/every-day-at-8am-and-8pm/"><span>Every day at 8am and 8pm</span><code>0 8,20 * * *</code></a></li></ul>
+<h2>Weekly and weekdays</h2>
+<ul class="cron-list"><li><a href="/cron/every-weekday/"><span>Every weekday</span><code>0 0 * * 1-5</code></a></li><li><a href="/cron/every-weekday-at-9am/"><span>Every weekday at 9am</span><code>0 9 * * 1-5</code></a></li><li><a href="/cron/every-weekend/"><span>Every weekend</span><code>0 0 * * 0,6</code></a></li><li><a href="/cron/every-monday/"><span>Every monday</span><code>0 0 * * 1</code></a></li><li><a href="/cron/every-monday-at-9am/"><span>Every monday at 9am</span><code>0 9 * * 1</code></a></li><li><a href="/cron/every-friday-at-5pm/"><span>Every friday at 5pm</span><code>0 17 * * 5</code></a></li><li><a href="/cron/every-sunday/"><span>Every sunday</span><code>0 0 * * 0</code></a></li><li><a href="/cron/every-sunday-at-3am/"><span>Every sunday at 3am</span><code>0 3 * * 0</code></a></li></ul>
+<h2>Business hours</h2>
+<ul class="cron-list"><li><a href="/cron/every-hour-business-hours/"><span>Every hour during business hours</span><code>0 9-17 * * 1-5</code></a></li><li><a href="/cron/every-15-minutes-business-hours/"><span>Every 15 minutes during business hours</span><code>*/15 9-17 * * 1-5</code></a></li><li><a href="/cron/every-30-minutes-business-hours/"><span>Every 30 minutes during business hours</span><code>*/30 9-17 * * 1-5</code></a></li></ul>
+<h2>Monthly and yearly</h2>
+<ul class="cron-list"><li><a href="/cron/every-month/"><span>Every month</span><code>0 0 1 * *</code></a></li><li><a href="/cron/first-and-fifteenth/"><span>On the 1st and 15th of every month</span><code>0 0 1,15 * *</code></a></li><li><a href="/cron/every-month-on-the-15th/"><span>On the 15th of every month</span><code>0 0 15 * *</code></a></li><li><a href="/cron/every-2-months/"><span>Every 2 months</span><code>0 0 1 */2 *</code></a></li><li><a href="/cron/every-quarter/"><span>Every quarter</span><code>0 0 1 1,4,7,10 *</code></a></li><li><a href="/cron/every-6-months/"><span>Every 6 months</span><code>0 0 1 1,7 *</code></a></li><li><a href="/cron/every-year/"><span>Every year</span><code>0 0 1 1 *</code></a></li><li><a href="/cron/on-the-31st/"><span>On the 31st of the month</span><code>0 0 31 * *</code></a></li></ul>
+</div></section></main>
+<footer class="footer">
+<div class="container">
+<div class="footer-bottom">
+<p>© 2026 Vipul Codes</p>
+<p class="footer-note">Run times on every page are computed from the expression, not typed by hand.</p>
+</div>
+</div>
+</footer>
+<script src="/js/main.js"></script>
+</body>
+</html>
