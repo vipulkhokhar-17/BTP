@@ -1,374 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Vipul Codes — Expert Developer Insights &amp; Guides</title>
-<meta content="Discover expert programming tutorials, web development guides, and tech insights on Vipul Codes. Level up your coding skills." name="description"/>
-<meta content="programming, web development, coding tutorials, javascript, python, developer guides, tech insights" name="keywords"/>
-<meta content="Vipul Khokhar" name="author"/>
-<meta content="index, follow" name="robots"/>
-<link href="https://vip-ul.codes/" rel="canonical"/>
-<!-- Open Graph -->
-<meta content="Vipul Codes — Expert Developer Insights &amp; Programming Guides" property="og:title"/>
-<meta content="Discover expert programming tutorials, web development guides, and tech insights. Level up your coding skills." property="og:description"/>
-<meta content="https://vip-ul.codes/" property="og:url"/>
-<meta content="website" property="og:type"/>
-<meta content="Vipul Codes" property="og:site_name"/>
-<meta content="https://vip-ul.codes/images/og-cover.jpg" property="og:image"/>
-<!-- Twitter Card -->
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="Vipul Codes — Expert Developer Insights" name="twitter:title"/>
-<meta content="Expert programming tutorials, web development guides, and tech insights." name="twitter:description"/>
-<!-- Preconnect -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/>
-<!-- JSON-LD Structured Data -->
-
-
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Vipul Codes",
-  "url": "https://vip-ul.codes"
-}</script></head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vipul Codes — Cron Expressions Explained for Every Platform</title>
+<meta name="description" content="Cron expressions explained with computed run times and copy-ready syntax for crontab, GitHub Actions, Kubernetes, AWS EventBridge, Spring and Quartz.">
+<link rel="canonical" href="https://vip-ul.codes/">
+<meta property="og:title" content="Vipul Codes — Cron Expressions Explained for Every Platform">
+<meta property="og:description" content="Cron expressions explained with computed run times and copy-ready syntax for crontab, GitHub Actions, Kubernetes, AWS EventBridge, Spring and Quartz.">
+<meta property="og:url" content="https://vip-ul.codes/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vipul Codes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Vipul Codes", "url": "https://vip-ul.codes/"}</script>
+</head>
 <body>
-<!-- Navigation -->
 <nav class="navbar" id="navbar">
 <div class="nav-container">
-<a class="nav-logo" href="/" id="nav-logo">
-<span class="logo-bracket">&lt;</span>
-<span class="logo-text">Vipul</span>
-<span class="logo-dot">.</span>
-<span class="logo-text-alt">codes</span>
-<span class="logo-bracket">/&gt;</span>
-</a>
+<a class="nav-logo" href="/"><span class="logo-bracket">&lt;</span><span class="logo-text">Vipul</span><span class="logo-dot">.</span><span class="logo-text-alt">codes</span><span class="logo-bracket">/&gt;</span></a>
 <ul class="nav-menu" id="nav-menu">
-<li><a class="nav-link active" href="/" id="nav-home">Home</a></li>
-<li><a class="nav-link" href="/about.html" id="nav-about">About</a></li>
-<li><a class="nav-link" href="/contact.html" id="nav-contact">Contact</a></li>
+<li><a class="nav-link active" href="/">Home</a></li>
+<li><a class="nav-link" href="/cron/">Cron reference</a></li>
+<li><a class="nav-link" href="/about.html">About</a></li>
+<li><a class="nav-link" href="/contact.html">Contact</a></li>
 </ul>
-<button aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle">
-<span></span><span></span><span></span>
-</button>
+<button aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
 </div>
 </nav>
-<!-- Hero Section -->
-<header class="hero" id="hero-section">
-<div class="hero-bg">
-<div class="hero-grid"></div>
-<div class="hero-glow"></div>
-</div>
+<header class="hero">
+<div class="hero-bg"><div class="hero-grid"></div><div class="hero-glow"></div></div>
 <div class="hero-content">
-<div class="hero-badge" id="hero-badge">
-<span class="badge-dot"></span>
-<span>New: Web Performance Deep Dive Series</span>
-</div>
-<h1 id="hero-title">
-                Craft Better Code.<br/>
-<span class="gradient-text">Ship Faster Products.</span>
-</h1>
-<p class="hero-subtitle" id="hero-subtitle">
-                Deep-dive programming tutorials, architecture insights, and performance
-                optimization guides for developers who want to build exceptional software.
-            </p>
-<div class="hero-cta">
-<a class="btn btn-primary" href="#articles" id="cta-explore">
-                    Explore Articles
-                    <svg fill="none" height="16" viewbox="0 0 16 16" width="16">
-<path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</a>
-<a class="btn btn-ghost" href="/about.html" id="cta-about">About Me</a>
-</div>
-<div class="hero-stats">
-<div class="stat">
-<span class="stat-number" data-target="50">0</span><span class="stat-suffix">+</span>
-<span class="stat-label">Articles</span>
-</div>
-<div class="stat-divider"></div>
-<div class="stat">
-<span class="stat-number" data-target="25">0</span><span class="stat-suffix">K</span>
-<span class="stat-label">Readers</span>
-</div>
-<div class="stat-divider"></div>
-<div class="stat">
-<span class="stat-number" data-target="12">0</span><span class="stat-suffix">+</span>
-<span class="stat-label">Topics</span>
-</div>
-</div>
+<h1>Cron schedules,<br><span class="gradient-text">explained for every platform.</span></h1>
+<p class="hero-subtitle">Find the expression you need, see exactly when it runs, and copy the
+right syntax for crontab, GitHub Actions, Kubernetes, AWS, Spring or Quartz.</p>
+<div class="hero-cta"><a class="btn btn-primary" href="/cron/">Browse all 46 schedules</a></div>
 </div>
 </header>
-<!-- Main Content -->
-<main>
-<!-- Featured Article -->
-<section class="section featured-section" id="featured-section">
+<main><section class="section"><div class="container">
+<h2>Popular schedules</h2>
+<ul class="cron-list"><li><a href="/cron/every-5-minutes/"><span>Every 5 minutes</span><code>*/5 * * * *</code></a></li><li><a href="/cron/every-15-minutes/"><span>Every 15 minutes</span><code>*/15 * * * *</code></a></li><li><a href="/cron/every-hour/"><span>Every hour</span><code>0 * * * *</code></a></li><li><a href="/cron/every-day-at-midnight/"><span>Every day at midnight</span><code>0 0 * * *</code></a></li><li><a href="/cron/every-weekday-at-9am/"><span>Every weekday at 9am</span><code>0 9 * * 1-5</code></a></li><li><a href="/cron/every-monday/"><span>Every monday</span><code>0 0 * * 1</code></a></li><li><a href="/cron/every-month/"><span>Every month</span><code>0 0 1 * *</code></a></li><li><a href="/cron/every-6-hours/"><span>Every 6 hours</span><code>0 */6 * * *</code></a></li></ul>
+</div></section></main>
+<footer class="footer">
 <div class="container">
-<div class="section-header">
-<span class="section-tag">Featured</span>
-<h2 id="featured-heading">Latest Deep Dive</h2>
-</div>
-<article class="featured-card" id="featured-article">
-<div class="featured-image">
-<div class="featured-img-placeholder">
-<div class="code-window">
-<div class="code-header">
-<span class="dot red"></span>
-<span class="dot yellow"></span>
-<span class="dot green"></span>
-<span class="code-title">performance.js</span>
-</div>
-<pre class="code-content"><code><span class="kw">const</span> <span class="fn">optimize</span> = <span class="kw">async</span> () =&gt; {
-  <span class="kw">const</span> metrics = <span class="kw">await</span> <span class="fn">getCoreWebVitals</span>();
-  <span class="kw">const</span> {LCP, FID, CLS} = metrics;
-  
-  <span class="cm">// Preload critical resources</span>
-  <span class="fn">prefetchRoutes</span>(criticalPaths);
-  <span class="fn">lazyLoad</span>(belowFoldImages);
-  
-  <span class="kw">return</span> { score: <span class="num">98</span>, grade: <span class="str">'A+'</span> };
-};</code></pre>
-</div>
-</div>
-</div>
-<div class="featured-content">
-<div class="article-meta">
-<span class="meta-tag">Web Performance</span>
-<span class="meta-date">Sep 28, 2026</span>
-<span class="meta-read">12 min read</span>
-</div>
-<h3>The Complete Guide to Modern Web Performance Optimization</h3>
-<p>
-                            Learn advanced techniques to optimize your website's loading speed,
-                            Core Web Vitals, and overall performance. From resource hints to
-                            code splitting, this comprehensive guide covers everything you need
-                            to achieve a perfect Lighthouse score.
-                        </p>
-<ul class="article-topics">
-<li>Core Web Vitals (LCP, FID, CLS)</li>
-<li>Resource loading strategies</li>
-<li>Code splitting &amp; lazy loading</li>
-<li>CDN &amp; caching best practices</li>
-<li>Real-world performance audits</li>
-</ul>
-<a class="read-more" href="#" id="read-featured">
-                            Read Full Article
-                            <svg fill="none" height="14" viewbox="0 0 16 16" width="14">
-<path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</a>
-</div>
-</article>
-</div>
-</section>
-<!-- Articles Grid -->
-<section class="section articles-section" id="articles">
-<div class="container">
-<div class="section-header">
-<span class="section-tag">Articles</span>
-<h2 id="articles-heading">Recent Posts</h2>
-<p class="section-desc">
-                        In-depth technical articles covering modern web development,
-                        system design, and software engineering best practices.
-                    </p>
-</div>
-<div class="articles-grid" id="articles-grid">
-<!-- Article 1 -->
-<article class="article-card" id="article-1">
-<div class="card-icon">
-<svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24">
-<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-</svg>
-</div>
-<div class="card-meta">
-<span class="meta-tag">JavaScript</span>
-<span class="meta-date">Sep 20, 2026</span>
-</div>
-<h3>Understanding the JavaScript Event Loop: A Deep Dive</h3>
-<p>Master the event loop, microtasks, macrotasks, and how JavaScript handles asynchronous operations under the hood.</p>
-<div class="card-footer">
-<span class="read-time">8 min read</span>
-<a class="card-link" href="#">Read →</a>
-</div>
-</article>
-<!-- Article 2 -->
-<article class="article-card" id="article-2">
-<div class="card-icon">
-<svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24">
-<rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 21V9"></path>
-</svg>
-</div>
-<div class="card-meta">
-<span class="meta-tag">Architecture</span>
-<span class="meta-date">Sep 14, 2026</span>
-</div>
-<h3>Designing Scalable APIs: REST vs GraphQL vs gRPC in 2026</h3>
-<p>A practical comparison of API paradigms with real-world benchmarks, trade-offs, and decision frameworks for modern applications.</p>
-<div class="card-footer">
-<span class="read-time">15 min read</span>
-<a class="card-link" href="#">Read →</a>
-</div>
-</article>
-<!-- Article 3 -->
-<article class="article-card" id="article-3">
-<div class="card-icon">
-<svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24">
-<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-</svg>
-</div>
-<div class="card-meta">
-<span class="meta-tag">Security</span>
-<span class="meta-date">Sep 7, 2026</span>
-</div>
-<h3>Web Security Essentials: XSS, CSRF, and Beyond</h3>
-<p>A developer's guide to understanding and preventing common web vulnerabilities, with code examples and mitigation strategies.</p>
-<div class="card-footer">
-<span class="read-time">11 min read</span>
-<a class="card-link" href="#">Read →</a>
-</div>
-</article>
-<!-- Article 4 -->
-<article class="article-card" id="article-4">
-<div class="card-icon">
-<svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24">
-<polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>
-</svg>
-</div>
-<div class="card-meta">
-<span class="meta-tag">Python</span>
-<span class="meta-date">Aug 30, 2026</span>
-</div>
-<h3>Advanced Python Patterns: Decorators, Generators &amp; Context Managers</h3>
-<p>Go beyond the basics with advanced Python patterns that make your code more elegant, efficient, and Pythonic.</p>
-<div class="card-footer">
-<span class="read-time">10 min read</span>
-<a class="card-link" href="#">Read →</a>
-</div>
-</article>
-<!-- Article 5 -->
-<article class="article-card" id="article-5">
-<div class="card-icon">
-<svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24">
-<circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path>
-</svg>
-</div>
-<div class="card-meta">
-<span class="meta-tag">DevOps</span>
-<span class="meta-date">Aug 22, 2026</span>
-</div>
-<h3>Docker to Kubernetes: A Developer's Migration Playbook</h3>
-<p>Step-by-step guide to containerizing your apps with Docker and orchestrating them with Kubernetes in production.</p>
-<div class="card-footer">
-<span class="read-time">14 min read</span>
-<a class="card-link" href="#">Read →</a>
-</div>
-</article>
-<!-- Article 6 -->
-<article class="article-card" id="article-6">
-<div class="card-icon">
-<svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24">
-<path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path>
-</svg>
-</div>
-<div class="card-meta">
-<span class="meta-tag">Database</span>
-<span class="meta-date">Aug 15, 2026</span>
-</div>
-<h3>PostgreSQL vs MongoDB: Choosing the Right Database in 2026</h3>
-<p>Data-driven comparison with benchmarks, use-case analysis, and expert recommendations for your next project.</p>
-<div class="card-footer">
-<span class="read-time">9 min read</span>
-<a class="card-link" href="#">Read →</a>
-</div>
-</article>
-</div>
-</div>
-</section>
-<!-- Newsletter Section -->
-<section class="section newsletter-section" id="newsletter-section">
-<div class="container">
-<div class="newsletter-card">
-<div class="newsletter-content">
-<h2 id="newsletter-heading">Stay in the Loop</h2>
-<p>Get weekly deep-dives on web development, system design, and developer productivity delivered straight to your inbox.</p>
-<form class="newsletter-form" id="newsletter-form">
-<div class="input-group">
-<input aria-label="Email address" id="newsletter-email" placeholder="your@email.com" required="" type="email"/>
-<button class="btn btn-primary" id="newsletter-submit" type="submit">Subscribe</button>
-</div>
-<p class="form-note">No spam. Unsubscribe anytime. Join 5,000+ developers.</p>
-</form>
-</div>
-<div class="newsletter-visual">
-<div class="terminal-window">
-<div class="terminal-header">
-<span class="dot red"></span>
-<span class="dot yellow"></span>
-<span class="dot green"></span>
-<span class="terminal-title">~/inbox</span>
-</div>
-<div class="terminal-body">
-<p><span class="prompt">$</span> <span class="cmd">cat latest_newsletter.md</span></p>
-<p class="output"># This Week in Dev</p>
-<p class="output dim">→ Web Performance Deep Dive</p>
-<p class="output dim">→ JS Event Loop Explained</p>
-<p class="output dim">→ API Design Patterns</p>
-<p><span class="prompt">$</span> <span class="cursor">▊</span></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="footer" id="footer">
-<div class="container">
-<div class="footer-grid">
-<div class="footer-brand">
-<a class="footer-logo" href="/">
-<span class="logo-bracket">&lt;</span>
-<span class="logo-text">Vipul</span>
-<span class="logo-dot">.</span>
-<span class="logo-text-alt">codes</span>
-<span class="logo-bracket">/&gt;</span>
-</a>
-<p>Expert developer insights, programming tutorials, and web development guides for building exceptional software.</p>
-</div>
-<div class="footer-links">
-<h4>Navigation</h4>
-<ul>
-<li><a href="/">Home</a></li>
-<li><a href="/about.html">About</a></li>
-<li><a href="/contact.html">Contact</a></li>
-</ul>
-</div>
-<div class="footer-links">
-<h4>Topics</h4>
-<ul>
-<li><a href="#">JavaScript</a></li>
-<li><a href="#">Python</a></li>
-<li><a href="#">Web Performance</a></li>
-<li><a href="#">System Design</a></li>
-</ul>
-</div>
-<div class="footer-links">
-<h4>Connect</h4>
-<ul>
-<li><a href="https://github.com" rel="noopener noreferrer" target="_blank">GitHub</a></li>
-<li><a href="https://twitter.com" rel="noopener noreferrer" target="_blank">Twitter / X</a></li>
-<li><a href="https://linkedin.com" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
-</ul>
-</div>
-</div>
 <div class="footer-bottom">
-<p>© 2026 Vipul Codes. All rights reserved.</p>
-<p class="footer-note">Built with passion, optimized for performance.</p>
+<p>© 2026 Vipul Codes</p>
+<p class="footer-note">Run times on every page are computed from the expression, not typed by hand.</p>
 </div>
 </div>
 </footer>
-<script src="js/main.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,10 @@
+# GitHub Pages builds this repo with Jekyll; publish only the website.
+exclude:
+  - generator
+  - seo_agent
+  - tests
+  - experiments
+  - data
+  - reports
+  - requirements.txt
+  - README.md
