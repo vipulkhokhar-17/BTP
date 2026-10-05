@@ -11,12 +11,18 @@ effect at least as large. That makes no distribution assumptions, which
 matters with a few dozen pages and noisy search data.
 """
 
+import math
 import random
 from collections import defaultdict
 from datetime import date, timedelta
 from statistics import mean
 
 METRICS = ("clicks", "impressions", "ctr", "position")
+# Count metrics are compared as per-page log ratios, so a page with 50 clicks/day
+# and a page with 1 click/day weigh equally. Absolute differences let the
+# biggest pages' natural drift drown out the effect (see seo_agent/power.py).
+COUNT_METRICS = ("clicks", "impressions")
+LOG_EPS = 0.1  # per-day smoothing so pages with zero clicks in one period stay defined
 
 
 def _page_key(url):
@@ -76,7 +82,7 @@ def permutation_p(changes, treatment, control, observed, n=5000, seed=0):
     return (hits + 1) / (n + 1)
 
 
-def analyze(exp, rows, pre_days=28, post_days=28, burn_in_days=7, end=None):
+def analyze(exp, rows, pre_days=28, post_days=28, burn_in_days=7, end=None, n_perm=5000):
     """Compare [start - pre_days, start) with [start + burn_in, start + burn_in + post_days).
 
     The burn-in skips the days Google needs to recrawl the changed pages.
@@ -100,9 +106,15 @@ def analyze(exp, rows, pre_days=28, post_days=28, burn_in_days=7, end=None):
             b, a = before[p][m], after[p][m]
             changes[p] = None if b is None or a is None else a - b
         est = did(changes, exp["treatment"], exp["control"])
+        test_changes, test_est, pct = changes, est, None
+        if m in COUNT_METRICS:
+            test_changes = {p: math.log((after[p][m] + LOG_EPS) / (before[p][m] + LOG_EPS)) for p in pages}
+            test_est = did(test_changes, exp["treatment"], exp["control"])
+            pct = math.expm1(test_est) if test_est is not None else None
         results[m] = {
             "effect": est,
-            "p_value": permutation_p(changes, exp["treatment"], exp["control"], est),
+            "effect_pct": pct,
+            "p_value": permutation_p(test_changes, exp["treatment"], exp["control"], test_est, n=n_perm),
             "n_treatment": sum(changes[p] is not None for p in exp["treatment"]),
             "n_control": sum(changes[p] is not None for p in exp["control"]),
             "treatment_before": _avg(before, exp["treatment"], m),
@@ -124,8 +136,9 @@ def verdict(result, metric, alpha=0.05):
     r = result["metrics"][metric]
     if r["effect"] is None or r["p_value"] is None:
         return "inconclusive (not enough data)"
+    effect = r["effect_pct"] if r.get("effect_pct") is not None else r["effect"]
     # For position, lower is better.
-    better = r["effect"] < 0 if metric == "position" else r["effect"] > 0
+    better = effect < 0 if metric == "position" else effect > 0
     if r["p_value"] >= alpha:
         return "no significant difference"
     return "improved" if better else "degraded"
@@ -137,14 +150,16 @@ def format_report(exp, result):
              f"**Change on treatment pages:** `{exp['changes']}`", "",
              f"Pre-period {result['pre'][0]} → {result['pre'][1]}, "
              f"post-period {result['post'][0]} → {result['post'][1]}", "",
-             "| Metric | Treatment before → after | Control before → after | DiD effect | p-value | Verdict |",
-             "|---|---|---|---|---|---|"]
+             "| Metric | Treatment before → after | Control before → after | DiD effect | Relative effect | p-value | Verdict |",
+             "|---|---|---|---|---|---|---|"]
 
     def f(x):
         return "–" if x is None else f"{x:.3f}"
     for m, r in result["metrics"].items():
         lines.append(f"| {m} | {f(r['treatment_before'])} → {f(r['treatment_after'])} | "
                      f"{f(r['control_before'])} → {f(r['control_after'])} | {f(r['effect'])} | "
+                     f"{'–' if r['effect_pct'] is None else format(r['effect_pct'], '+.1%')} | "
                      f"{f(r['p_value'])} | {verdict(result, m)} |")
-    lines += ["", "Clicks and impressions are per page per day. Position: lower is better."]
+    lines += ["", "Clicks and impressions are per page per day. Their p-values and relative effects use "
+              "per-page log ratios. Position: lower is better."]
     return "\n".join(lines) + "\n"

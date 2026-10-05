@@ -215,6 +215,21 @@ def render_cron_page(entry, knobs):
         f"<tr><td><code>{e(f)}</code></td><td>{e(name)}</td><td>{e(cron.describe_field(f, i))}</td></tr>"
         for i, (f, (name, _, _)) in enumerate(zip(c.fields, cron.FIELDS)))
     runs = "\n".join(f"<li>{r:%a %d %b %Y, %H:%M}</li>" for r in c.next_runs(EXAMPLE_FROM, 6))
+    freq = cron.frequency(c)
+    gap_text = ""
+    if freq["min_gap_min"] is not None:
+        if freq["min_gap_min"] == freq["max_gap_min"]:
+            gap_text = f"<li>Runs are always exactly {cron.human_minutes(freq['min_gap_min'])} apart.</li>"
+        else:
+            gap_text = (f"<li>The gap between runs varies from {cron.human_minutes(freq['min_gap_min'])} "
+                        f"to {cron.human_minutes(freq['max_gap_min'])}.</li>")
+    per_day = freq["runs_per_matching_day"]
+    freq_html = f"""<h2>How often it runs</h2>
+<ul class="runs-facts">
+<li>{per_day:,} run{"s" if per_day != 1 else ""} on each day it is active.</li>
+<li>Active on {freq["matching_days_per_year"]} of the 365 days in 2026, for {freq["runs_per_year"]:,} runs that year.</li>
+{gap_text}
+</ul>"""
     gotchas = cron.gotchas(c)
     gotcha_html = ""
     if gotchas:
@@ -287,6 +302,7 @@ def render_cron_page(entry, knobs):
 <ul class="runs">
 {runs}
 </ul>
+{freq_html}
 {gotcha_html}
 {platform_section(entry, c) if knobs["platforms"] else ""}
 {faq_html}

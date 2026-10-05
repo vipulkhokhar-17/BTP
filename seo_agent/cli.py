@@ -6,6 +6,7 @@
   python -m seo_agent start EXP_ID
   python -m seo_agent analyze EXP_ID
   python -m seo_agent stop EXP_ID keep|revert
+  python -m seo_agent power --rate 2
 
 After new/start/stop, rebuild the site (python -m generator.build) and commit.
 """
@@ -20,7 +21,7 @@ from pathlib import Path
 from generator.build import DEFAULT_KNOBS, ROOT
 from generator.catalog import CATALOG
 
-from . import analyze, audit, experiment, gsc
+from . import analyze, audit, experiment, gsc, power
 
 SITE_PROPERTY = "sc-domain:vip-ul.codes"
 DATA = ROOT / "data" / "gsc_pages.csv"
@@ -120,6 +121,15 @@ def cmd_analyze(args):
           f"{analyze.verdict(result, exp['primary_metric'])}. Report saved to {out.relative_to(ROOT)}")
 
 
+def cmd_power(args):
+    print(f"{args.pages} pages, {args.pre}d before, {args.burn_in}d burn-in, {args.post}d after, "
+          f"{args.sims} simulations each")
+    for uplift in args.uplift:
+        pw = power.power(n_pages=args.pages, median_rate=args.rate, uplift=uplift, pre_days=args.pre,
+                         post_days=args.post, burn_in=args.burn_in, sims=args.sims)
+        print(f"  median {args.rate}/page/day, true uplift {uplift:+.0%}: detected {pw:.0%} of the time")
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="seo_agent")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -159,7 +169,19 @@ def main(argv=None):
     an.add_argument("--burn-in", type=int, default=7)
     an.set_defaults(fn=cmd_analyze)
 
+    pw = sub.add_parser("power", help="simulate how large an effect a test can detect")
+    pw.add_argument("--rate", type=float, default=2.0, help="median clicks (or impressions) per page per day")
+    pw.add_argument("--uplift", type=float, action="append", default=None)
+    pw.add_argument("--pages", type=int, default=len(CATALOG))
+    pw.add_argument("--pre", type=int, default=28)
+    pw.add_argument("--post", type=int, default=28)
+    pw.add_argument("--burn-in", type=int, default=7)
+    pw.add_argument("--sims", type=int, default=60)
+    pw.set_defaults(fn=cmd_power)
+
     args = ap.parse_args(argv)
+    if args.cmd == "power" and not args.uplift:
+        args.uplift = [0.1, 0.2, 0.3, 0.5]
     args.fn(args)
 
 

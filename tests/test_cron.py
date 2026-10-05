@@ -55,3 +55,20 @@ def test_gotchas_flag_uneven_steps():
     assert any("restarts at the top of each hour" in g for g in cron.gotchas(cron.parse("*/45 * * * *")))
     assert not cron.gotchas(cron.parse("*/15 * * * *"))
     assert any("every minute" in g for g in cron.gotchas(cron.parse("* 9 * * *")))
+
+
+@pytest.mark.parametrize("expr", ["0 9 * * 1-5", "*/15 9-17 * * 1-5", "0 0 31 * *", "0 */5 * * *",
+                                  "0 0 1 1,4,7,10 *", "*/45 * * * *", "0 0 13 * 5"])
+def test_frequency_matches_croniter(expr):
+    f = cron.frequency(cron.parse(expr))
+    it = croniter(expr, datetime(2025, 12, 31, 23, 59))
+    runs = []
+    while True:
+        r = it.get_next(datetime)
+        if r.year > 2026:
+            break
+        runs.append(r)
+    gaps = [(b - a).total_seconds() / 60 for a, b in zip(runs, runs[1:])]
+    assert f["runs_per_year"] == len(runs)
+    assert f["min_gap_min"] == min(gaps)
+    assert f["max_gap_min"] == max(gaps)

@@ -1403,8 +1403,8 @@ ul, ol {
 .fields { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
 .fields th, .fields td { text-align: left; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); }
 .fields th { color: var(--text-tertiary); font-weight: 600; }
-.runs, .gotchas, .related { padding-left: 1.25rem; color: var(--text-secondary); }
-.runs li, .gotchas li, .related li { margin: 0.35rem 0; list-style: disc; }
+.runs, .runs-facts, .gotchas, .related { padding-left: 1.25rem; color: var(--text-secondary); }
+.runs li, .runs-facts li, .gotchas li, .related li { margin: 0.35rem 0; list-style: disc; }
 .runs li { font-family: var(--font-mono); font-size: var(--fs-sm); }
 .related a { color: var(--accent-primary); }
 .snippet {

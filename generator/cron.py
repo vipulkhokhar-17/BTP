@@ -275,3 +275,42 @@ def to_spring(cron):
     if cron.dom_restricted and cron.dow_restricted:
         return None
     return "0 " + cron.expr
+
+
+# ─── Frequency facts ─────────────────────────────────────────────────
+
+def frequency(cron, year=2026):
+    """Run counts and gaps between runs, computed over a whole calendar year."""
+    from datetime import date as _date
+    per_day = len(cron.minutes) * len(cron.hours)
+    days = []
+    d = _date(year, 1, 1)
+    while d.year == year:
+        if d.month in cron.months and cron._day_ok(datetime(d.year, d.month, d.day)):
+            days.append(d)
+        d += timedelta(days=1)
+    runs_per_year = per_day * len(days)
+    # Gaps: sample enough runs to cover every pattern (a week for sub-daily, a year otherwise).
+    start = datetime(year, 1, 1) - timedelta(minutes=1)
+    sample = cron.next_runs(start, min(runs_per_year, 3000) + 1)
+    gaps = [(b - a).total_seconds() / 60 for a, b in zip(sample, sample[1:])]
+    return {
+        "runs_per_matching_day": per_day,
+        "matching_days_per_year": len(days),
+        "runs_per_year": runs_per_year,
+        "min_gap_min": min(gaps) if gaps else None,
+        "max_gap_min": max(gaps) if gaps else None,
+    }
+
+
+def human_minutes(m):
+    m = int(round(m))
+    if m < 60:
+        return f"{m} minute{'s' if m != 1 else ''}"
+    if m % 1440 == 0:
+        d = m // 1440
+        return f"{d} day{'s' if d != 1 else ''}"
+    if m % 60 == 0:
+        h = m // 60
+        return f"{h} hour{'s' if h != 1 else ''}"
+    return f"{m // 60} h {m % 60} min"
