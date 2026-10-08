@@ -110,7 +110,7 @@ def audit_site(root, site="https://vip-ul.codes"):
             issues.append(f"meta description is {len(meta)} chars")
         if p.h1 != 1:
             issues.append(f"{p.h1} <h1> elements")
-        if p.canonical != site + path and not (path.endswith(".html") and p.canonical == site + path[:-5]):
+        if p.canonical != site + path:
             issues.append(f"canonical {p.canonical!r} does not match {site + path}")
         pages[path] = PageAudit(path, title, len(title), len(meta), p.h1, p.words,
                                 len(internal), jsonld_types=types, issues=issues)
